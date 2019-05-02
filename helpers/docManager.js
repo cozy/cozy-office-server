@@ -277,10 +277,7 @@ docManager.getProtocol = function () {
 };
 
 docManager.curUserHostAddress = function (userAddress) {
-    if (!userAddress)
-        userAddress = docManager.req.headers["x-forwarded-for"] || docManager.req.connection.remoteAddress;
-
-    return userAddress.replace(new RegExp("[^0-9a-zA-Z.=]", "g"), "_");
+    return "shared";
 };
 
 docManager.copyFile = function (exist, target) {
