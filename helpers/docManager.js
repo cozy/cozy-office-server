@@ -110,6 +110,17 @@ docManager.getCorrectName = function (fileName, userAddress) {
     return name;
 };
 
+
+docManager.createFile = function (source, file, fileExt, instance) {
+    const fileName = docManager.getCorrectName(file + "." + fileExt);
+
+    docManager.copyFile(path.join(docManager.dir, "public", "samples", source), docManager.storagePath(fileName));
+
+    docManager.saveFileData(fileName, instance, instance);
+
+    return fileName;
+}
+
 docManager.createDemo = function (demoName, userid, username) {
     const fileName = docManager.getCorrectName(demoName);
 
