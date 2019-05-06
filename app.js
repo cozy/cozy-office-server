@@ -531,6 +531,7 @@ app.get("/editor", function (req, res) {
 
         var fileExt = req.query.fileExt;
         var backUrl = req.query.backUrl;
+        var title = req.query.title;
         var history = [];
         var historyData = [];
         var lang = docManager.getLang();
@@ -619,7 +620,7 @@ app.get("/editor", function (req, res) {
         var argss = {
             apiUrl: siteUrl + configServer.get('apiUrl'),
             file: {
-                name: fileName,
+                name: title || fileName,
                 ext: fileUtility.getFileExtension(fileName, true),
                 uri: url,
                 version: countVersion,
