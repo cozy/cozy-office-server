@@ -531,6 +531,7 @@ app.get("/editor", function (req, res) {
         docManager.init(__dirname, req, res);
 
         var fileExt = req.query.fileExt;
+        var backUrl = req.query.backUrl;
         var history = [];
         var historyData = [];
         var lang = docManager.getLang();
@@ -638,7 +639,7 @@ app.get("/editor", function (req, res) {
                 modifyFilter: mode != "filter",
                 mode: canEdit && mode != "view" ? "edit" : "view",
                 canBackToFolder: type != "embedded",
-                backUrl: docManager.getServerUrl(),
+                backUrl: backUrl || docManager.getServerUrl(),
                 curUserHostAddress: docManager.curUserHostAddress(),
                 lang: lang,
                 userid: userid,
