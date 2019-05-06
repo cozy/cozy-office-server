@@ -512,17 +512,16 @@ app.post("/track", function (req, res) {
 
 app.post("/create", function (req, res) {
     docManager.init(__dirname, req, res);
-    const fileExt = req.query.ext;   
+    const ext = req.query.ext;   
     const source = "new." + ext;
     const file = req.query.file;
     const instance = req.query.instance ;
 
-    docManager.init(__dirname, req, res);
     const fileName = docManager.createFile(source, file, ext, instance);
 
-    response.setHeader("Content-Type", "application/json");
-    response.write(JSON.stringify({source, instance, ext, file, fileName}))
-    response.end();
+    res.setHeader("Content-Type", "application/json");
+    res.write(JSON.stringify({source, instance, ext, file, fileName}))
+    res.end();
 })
 
 app.get("/editor", function (req, res) {
